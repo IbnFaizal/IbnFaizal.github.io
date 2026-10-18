@@ -2,7 +2,7 @@
 
 # Ibnu Faizal — Senior Android Developer & Mobile Architect
 
-[![Live Portfolio](https://img.shields.io/badge/Live%20Website-GitHub%20Pages-10b981?style=for-the-badge&logo=github)](https://ibnfaizal.github.io/Portofolio/)
+[![Live Portfolio](https://img.shields.io/badge/Live%20Website-GitHub%20Pages-10b981?style=for-the-badge&logo=github)](https://ibnfaizal.github.io/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077b5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/ibnufaizal/)
 [![Email](https://img.shields.io/badge/Email-Contact%20Me-ea4335?style=for-the-badge&logo=gmail)](mailto:ibnufaizal.mobdev@gmail.com)
 
@@ -18,7 +18,7 @@
 
 Personal portfolio & interactive CV website of **Ibnu Faizal**, Senior Android Engineer with **7+ years** of specialized experience in native mobile engineering, large-scale Clean Architecture, modularization, and relentless performance engineering (+45% UI speedup).
 
-- 🌐 **Live Website**: [https://ibnfaizal.github.io/Portofolio/](https://ibnfaizal.github.io/Portofolio/)
+- 🌐 **Live Website**: [https://ibnfaizal.github.io/](https://ibnfaizal.github.io/)
 - 📍 **Location**: South Jakarta, Indonesia
 - ✉️ **Contact**: [ibnufaizal.mobdev@gmail.com](mailto:ibnufaizal.mobdev@gmail.com)
 
@@ -86,44 +86,6 @@ All certifications are issued and verified by **Dicoding Indonesia**:
 
 5. **Politeknik Harapan Bersama** (2014 — 2018)
    - *Bachelor of Informatics Engineering (D4)* — GPA 3.82 / 4.00 (**Cum Laude**)
-
----
-
-## ✨ Website Features & Design System
-
-The portfolio website is crafted using an editorial, precision design system inspired by **21st.dev** and modern developer landing pages:
-
-- **Bento Geometry Layout**: High-density content structure balancing stats, code, and narrative.
-- **Dynamic Experience Calculation**: Automatically calculates years of experience from career start (**April 2019**) so numbers stay up to date without manual edits.
-- **Dual Theme Support**: Obsidian dark mode and stone-cream light mode with instant toggle and `localStorage` persistence.
-- **Interactive Code Terminal**: Tabbed production architecture code viewer (Feature Module, Domain UseCase, Hilt Module).
-- **Production Architecture Modal**: Rich dialog view detailing real-world enterprise engineering highlights for each app.
-- **ATS-Friendly Printable Resume**: Integrated print stylesheet (`window.print()`) that formats the entire site into a clean, multi-page ATS resume on demand.
-- **Fluid Responsiveness**: Custom layouts optimized for desktop, tablet, and mobile devices.
-
----
-
-## 🚀 Running Locally
-
-No complex build tools or dependencies are required. It runs purely on standard web technologies (HTML5, CSS3, Vanilla JS):
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/IbnFaizal/Portofolio.git
-   cd Portofolio
-   ```
-
-2. **Open in browser**:
-   - Double click `index.html`, or
-   - Use any static local server:
-     ```bash
-     # Using Python
-     python3 -m http.server 8000
-
-     # Using Node.js
-     npx serve .
-     ```
-   - Open `http://localhost:8000` in your web browser.
 
 ---
 
