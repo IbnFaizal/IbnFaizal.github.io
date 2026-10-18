@@ -114,9 +114,11 @@ body {
   width: 100%;
   max-width: var(--max-w-container);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding-left: max(clamp(1rem, 3.5vw, 1.5rem), env(safe-area-inset-left));
+  padding-right: max(clamp(1rem, 3.5vw, 1.5rem), env(safe-area-inset-right));
   position: relative;
   z-index: 2;
+  box-sizing: border-box;
 }
 
 /* Typography Hierarchy */
@@ -138,7 +140,7 @@ a {
 
 /* Section Headings */
 .section-block {
-  padding: 6rem 0;
+  padding: clamp(3.5rem, 6vw, 6rem) 0;
 }
 
 .section-alt {
@@ -148,21 +150,21 @@ a {
 }
 
 .section-heading-wrap {
-  margin-bottom: 3rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
   max-width: 680px;
 }
 
 .section-title {
-  font-size: 2rem;
+  font-size: clamp(1.65rem, 3.5vw, 2.15rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   margin-bottom: 0.5rem;
 }
 
 .section-lead {
-  font-size: 1.05rem;
+  font-size: clamp(0.92rem, 1.8vw, 1.05rem);
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 /* ==========================================================================
@@ -415,8 +417,7 @@ a {
 /* Bento Grid */
 .hero-bento-grid {
   display: grid;
-  grid-template-columns: 1.35fr 0.85fr;
-  grid-template-rows: auto auto;
+  grid-template-columns: repeat(6, 1fr);
   gap: 1.25rem;
 }
 
@@ -424,7 +425,7 @@ a {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  padding: 1.85rem;
+  padding: clamp(1.25rem, 2.5vw, 1.85rem);
   position: relative;
   transition: border-color var(--transition-fast), transform var(--transition-fast);
 }
@@ -435,15 +436,14 @@ a {
 
 /* Bento Hero Main (Left Span) */
 .bento-hero-main {
-  grid-row: 1;
-  grid-column: 1;
+  grid-column: span 4;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .hero-headline {
-  font-size: 2.5rem;
+  font-size: clamp(1.75rem, 3.8vw, 2.5rem);
   font-weight: 800;
   letter-spacing: -0.035em;
   line-height: 1.15;
@@ -456,7 +456,7 @@ a {
 }
 
 .hero-subhead {
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
   color: var(--text-secondary);
   line-height: 1.65;
   margin-bottom: 2rem;
@@ -491,8 +491,7 @@ a {
 
 /* Bento Profile Card (Right Span) */
 .bento-profile-card {
-  grid-row: 1;
-  grid-column: 2;
+  grid-column: span 2;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -577,14 +576,12 @@ a {
 }
 
 /* Bento Stats Row (Span Across Bottom) */
-.bento-stat {
+.hero-bento-grid .bento-stat {
+  grid-column: span 2;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-
-.hero-bento-grid .bento-stat:nth-of-type(3) { grid-column: 1 / span 1; }
-.hero-bento-grid .bento-stat:nth-of-type(4) { grid-column: 2 / span 1; }
 
 .stat-top {
   display: flex;
@@ -684,10 +681,11 @@ a {
 
 .app-bento-header {
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  align-items: flex-start;
+  gap: 0.85rem;
   margin-bottom: 1rem;
   position: relative;
+  flex-wrap: wrap;
 }
 
 .app-brand-badge {
@@ -707,7 +705,8 @@ a {
 .bg-fif { background: #d97706; }
 
 .app-header-text {
-  flex-grow: 1;
+  flex: 1 1 140px;
+  min-width: 0;
 }
 
 .app-company-tag {
@@ -718,7 +717,7 @@ a {
 }
 
 .app-name {
-  font-size: 1.2rem;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
 }
 
 .app-downloads-badge {
@@ -729,6 +728,8 @@ a {
   background: var(--bg-surface-raised);
   border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
+  white-space: nowrap;
+  align-self: flex-start;
 }
 
 .app-downloads-badge.highlight {
@@ -791,6 +792,13 @@ a {
   display: flex;
   gap: 0.4rem;
   overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.terminal-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .t-tab {
@@ -803,6 +811,8 @@ a {
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all var(--transition-fast);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .t-tab:hover {
@@ -819,6 +829,7 @@ a {
 .terminal-ctrls {
   display: flex;
   gap: 6px;
+  flex-shrink: 0;
 }
 
 .t-ctrl {
@@ -829,7 +840,7 @@ a {
 }
 
 .terminal-content {
-  padding: 1.5rem;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
   min-height: 260px;
 }
 
@@ -843,11 +854,12 @@ a {
 
 pre code {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: clamp(0.75rem, 1.8vw, 0.85rem);
   line-height: 1.65;
   color: var(--text-primary);
   display: block;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Code tokens */
@@ -1107,11 +1119,12 @@ pre code {
   inset: 0;
   background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--transition-fast);
@@ -1124,13 +1137,15 @@ pre code {
 
 .modal-card {
   max-width: 620px;
-  width: 100%;
+  width: min(94vw, 620px);
   max-height: 85vh;
+  max-height: 85dvh;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   background: var(--bg-surface);
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-lg);
-  padding: 2.25rem;
+  padding: clamp(1.25rem, 3.5vw, 2.25rem);
   position: relative;
 }
 
@@ -1304,67 +1319,147 @@ pre code {
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN (TABLET & SMARTPHONE DYNAMIC ADJUSTMENTS)
+   Preserves exact layout composition, design hierarchy, and aesthetics
    ========================================================================== */
-@media (max-width: 992px) {
+
+/* 1. Tablet Landscape & Portrait (768px — 1024px) */
+@media (max-width: 1024px) {
   .hero-bento-grid {
-    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .bento-card {
+    padding: 1.5rem;
   }
 
   .bento-hero-main {
-    grid-column: 1;
+    grid-column: span 4;
   }
 
   .bento-profile-card {
-    grid-column: 1;
+    grid-column: span 2;
   }
 
-  .hero-bento-grid .bento-stat:nth-of-type(3),
+  /* Bottom 3 stats cards balance symmetrically on tablets */
+  .hero-bento-grid .bento-stat:nth-of-type(3) {
+    grid-column: span 2;
+  }
   .hero-bento-grid .bento-stat:nth-of-type(4) {
-    grid-column: 1;
+    grid-column: span 2;
+  }
+  .hero-bento-grid .bento-stat:nth-of-type(5) {
+    grid-column: span 2;
+  }
+
+  .profile-portrait-wrap {
+    height: 200px;
+  }
+
+  .profile-card-name {
+    font-size: 1.25rem;
+  }
+
+  .profile-meta-grid {
+    gap: 0.6rem;
+    padding: 0.75rem;
+  }
+
+  .meta-data {
+    font-size: 0.8rem;
   }
 
   .principles-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .principle-card {
+    padding: 1.35rem;
   }
 
   .apps-bento-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.15rem;
+  }
+
+  .app-bento-card {
+    padding: 1.5rem;
   }
 
   .tech-matrix-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
   }
 
-  .contact-box {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-headline {
-    font-size: 2rem;
+  .matrix-column {
+    padding: 1.35rem;
   }
 
   .career-entry {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
+    grid-template-columns: 180px 1fr;
+    gap: 1.75rem;
+  }
+
+  .contact-box {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2.25rem;
+  }
+}
+
+/* 2. Narrow Tablet Portrait (768px — 880px) */
+@media (max-width: 880px) and (min-width: 768px) {
+  .hero-bento-grid .bento-stat:nth-of-type(3) {
+    grid-column: span 3;
+  }
+  .hero-bento-grid .bento-stat:nth-of-type(4) {
+    grid-column: span 3;
+  }
+  .hero-bento-grid .bento-stat:nth-of-type(5) {
+    grid-column: span 6;
+  }
+
+  .principles-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .tech-matrix-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+/* 3. Smartphone Tier (≤ 767px) */
+@media (max-width: 767px) {
+  /* Navigation Bar Adaptations */
+  .site-header {
+    padding: 0.5rem 0;
+  }
+
+  .brand-role {
+    display: none;
+  }
+
+  .header-actions .btn-outline {
+    display: none;
   }
 
   .nav-links {
     position: fixed;
-    top: 60px;
+    top: 56px;
     left: 0;
     width: 100%;
-    background: var(--bg-canvas);
+    background: var(--bg-surface-raised);
     border-bottom: 1px solid var(--border-subtle);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     flex-direction: column;
-    padding: 1.5rem;
-    gap: 1rem;
+    padding: 1.5rem 1.25rem;
+    gap: 1.15rem;
     transform: translateY(-150%);
     transition: transform var(--transition-smooth);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    z-index: 99;
   }
 
   .nav-links.mobile-open {
@@ -1375,7 +1470,295 @@ pre code {
     display: flex;
   }
 
+  /* Status Banner */
+  .hero-status-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 1.15rem;
+  }
+
+  .availability-badge {
+    font-size: 0.76rem;
+    padding: 0.25rem 0.65rem;
+  }
+
+  .hero-geo {
+    font-size: 0.74rem;
+  }
+
+  /* Bento Hero Grid (Clean Vertical Sequence) */
+  .hero-bento-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .bento-hero-main,
+  .bento-profile-card,
+  .hero-bento-grid .bento-stat {
+    grid-column: 1 / -1;
+  }
+
+  .bento-card {
+    padding: 1.35rem 1.15rem;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.65rem, 6vw, 2.15rem);
+    line-height: 1.18;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subhead {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-cta-cluster {
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-cta-cluster .btn {
+    flex: 1 1 auto;
+    min-width: 130px;
+    justify-content: center;
+    font-size: 0.82rem;
+    padding: 0.6rem 0.95rem;
+  }
+
+  .credential-tags {
+    gap: 0.35rem 0.5rem;
+    font-size: 0.72rem;
+    padding-top: 1rem;
+  }
+
+  /* Profile Card on Mobile */
+  .profile-portrait-wrap {
+    height: 220px;
+    margin-bottom: 1rem;
+  }
+
+  .profile-card-name {
+    font-size: 1.25rem;
+  }
+
+  .profile-card-company {
+    font-size: 0.82rem;
+    margin-bottom: 1rem;
+  }
+
+  .profile-meta-grid {
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  .meta-lbl {
+    font-size: 0.65rem;
+  }
+
+  .meta-data {
+    font-size: 0.82rem;
+  }
+
+  /* Stats Cards */
+  .stat-metric-pill {
+    font-size: 1.15rem;
+  }
+
+  .stat-headline {
+    font-size: 1.02rem;
+  }
+
+  .stat-detail {
+    font-size: 0.82rem;
+  }
+
+  /* Principles Grid */
+  .principles-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .principle-card {
+    padding: 1.35rem 1.15rem;
+  }
+
+  /* Production Apps */
+  .apps-bento-grid {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+  }
+
+  .app-bento-card {
+    padding: 1.35rem 1.15rem;
+  }
+
+  .app-summary {
+    font-size: 0.88rem;
+  }
+
+  .app-actions-row {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .app-actions-row .btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  /* Code Terminal */
+  .terminal-topbar {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .terminal-ctrls {
+    display: none;
+  }
+
+  .terminal-content {
+    padding: 1.15rem 0.9rem;
+    min-height: 220px;
+  }
+
+  pre code {
+    font-size: 0.78rem;
+  }
+
+  .layer-block {
+    padding: 0.85rem 1rem;
+  }
+
+  .layer-name {
+    font-size: 0.88rem;
+  }
+
+  .layer-sub {
+    font-size: 0.72rem;
+  }
+
+  /* Career Timeline */
+  .career-timeline {
+    gap: 1.5rem;
+  }
+
+  .career-entry {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .career-aside {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+  }
+
+  .career-date {
+    font-size: 0.82rem;
+  }
+
+  .career-role {
+    font-size: 1.15rem;
+  }
+
+  .career-desc {
+    font-size: 0.88rem;
+  }
+
+  .career-points {
+    padding-left: 1.15rem;
+    font-size: 0.85rem;
+    gap: 0.4rem;
+  }
+
+  /* Tech Matrix */
+  .tech-matrix-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .matrix-column {
+    padding: 1.35rem 1.15rem;
+  }
+
+  /* Contact Section */
+  .contact-box {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1.5rem 1.15rem;
+  }
+
+  .contact-main-heading {
+    font-size: 1.55rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-sub {
+    font-size: 0.92rem;
+    margin-bottom: 1.5rem;
+  }
+
   .input-grid {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  /* Toast Centered on Mobile */
+  .toast {
+    bottom: 1.25rem;
+    left: 1.25rem;
+    right: 1.25rem;
+    text-align: center;
+  }
+
+  /* Footer */
+  .site-footer {
+    padding: 2rem 0;
+  }
+
+  .footer-layout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
+/* 4. Compact Smartphone (≤ 420px: iPhone SE, Galaxy S compact, foldables) */
+@media (max-width: 420px) {
+  .hero-cta-cluster .btn {
+    width: 100%;
+  }
+
+  .app-actions-row .btn {
+    width: 100%;
+  }
+
+  .profile-meta-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+    padding: 0.65rem;
+  }
+
+  .meta-lbl {
+    font-size: 0.62rem;
+  }
+
+  .meta-data {
+    font-size: 0.76rem;
+  }
+
+  .contact-row-link {
+    padding: 0.65rem 0.8rem;
+    font-size: 0.82rem;
+  }
+
+  .header-actions .btn-solid {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.76rem;
   }
 }

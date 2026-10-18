@@ -222,7 +222,7 @@ function openAppModal(key) {
       </ul>
     </div>
 
-    <div style="display: flex; gap: 0.65rem; justify-content: flex-end; border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
+    <div style="display: flex; gap: 0.65rem; justify-content: flex-end; flex-wrap: wrap; border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
       <a href="${p.playUrl}" target="_blank" rel="noopener" class="btn btn-solid btn-sm">
         <span>Google Play Store</span>
         <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 8h10M9 4l4 4-4 4"></path></svg>
