@@ -4,12 +4,51 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initExperienceCalculation();
   initTheme();
   initCodeTerminal();
   initAmbientCanvas();
   initMobileNav();
   initSmoothScrollTracking();
 });
+
+/* ==========================================================================
+   DYNAMIC EXPERIENCE CALCULATION (Start Date: April 2019)
+   ========================================================================== */
+function initExperienceCalculation() {
+  const startDate = new Date(2019, 3, 1); // April 2019 (Month 3 in 0-indexed JS Date)
+  const now = new Date();
+
+  let years = now.getFullYear() - startDate.getFullYear();
+  const m = now.getMonth() - startDate.getMonth();
+  if (m < 0 || (m === 0 && now.getDate() < startDate.getDate())) {
+    years--;
+  }
+  if (years < 1) years = 1;
+
+  const expYearsText = `${years}+ years`;
+  const expYearsBadge = `${years}+ Years`;
+
+  // Update inline body occurrences
+  document.querySelectorAll('.exp-years-text').forEach(el => {
+    el.textContent = expYearsText;
+  });
+
+  // Update badge/meta card occurrences
+  document.querySelectorAll('.exp-years-badge').forEach(el => {
+    el.textContent = expYearsBadge;
+  });
+
+  // Update SEO meta descriptions if present
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) {
+    metaDesc.setAttribute('content', metaDesc.getAttribute('content').replace(/\d+\+\s*years/i, expYearsText));
+  }
+  const ogDesc = document.querySelector('meta[property="og:description"]');
+  if (ogDesc) {
+    ogDesc.setAttribute('content', ogDesc.getAttribute('content').replace(/\d+\+\s*years/i, expYearsText));
+  }
+}
 
 /* ==========================================================================
    THEME TOGGLE
