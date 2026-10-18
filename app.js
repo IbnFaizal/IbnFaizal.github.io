@@ -173,12 +173,12 @@ function initAmbientCanvas() {
    ========================================================================== */
 const projectData = {
   pemrakarsa: {
-    title: 'BRISPOT Pemrakarsa',
+    title: 'BRILian Sales Platform (Pemrakarsa)',
     org: 'PT Bank Rakyat Indonesia (Persero) Tbk',
     badge: '100,000+ Downloads on Google Play',
     role: 'Android Developer → Senior Android Developer',
     tech: 'Kotlin, Clean Architecture, Modularization, Jetpack, Coroutines, Room, SQLite, Hilt, RESTful API',
-    playUrl: 'https://play.google.com/store/apps/details?id=id.co.bri.******',
+    playUrl: 'https://play.google.com/store/apps/details?id=id.co.bri.brispotnew',
     overview: 'Flagship enterprise loan origin and underwriting app used across all Bank BRI units in Indonesia. Enables loan officers to record applicant bio data, business surveys, financial metrics, and geolocations offline and online.',
     keyHighlights: [
       'Refactored legacy monolith into isolated feature modules (Clean Architecture), reducing compilation times by 35%.',
@@ -187,12 +187,12 @@ const projectData = {
     ]
   },
   pemutus: {
-    title: 'BRISPOT Pemutus',
+    title: 'BRILian Sales Platform (Pemutus)',
     org: 'PT Bank Rakyat Indonesia (Persero) Tbk',
     badge: '50,000+ Downloads on Google Play',
     role: 'Android Developer → Senior Android Developer',
     tech: 'Kotlin, Clean Architecture, Jetpack Component, Coroutines, SQLite, Dependency Injection (Hilt)',
-    playUrl: 'https://play.google.com/store/apps/details?id=id.co.bri.******',
+    playUrl: 'https://play.google.com/store/apps/details?id=id.co.bri.brispot.pemutus',
     overview: 'High-security executive approval tool for Bank BRI branch managers and credit decision makers to analyze risk profiles, review collateral assessments, and execute digital loan approvals.',
     keyHighlights: [
       'Implemented biometric auth, digital cryptographic signature signing, and SSL certificate pinning.',
